@@ -1,4 +1,5 @@
-const Pengajuan = require('../models/Pengajuan');
+const Pengajuan = require('../models/Pengajuan')
+const jwt_decode = require("jwt-decode")
 
 //Show list pengajuan
 const index = (req, res, next) => {
@@ -29,7 +30,12 @@ const show = (req, res, next) => {
 }
 
 const store = (req, res, next) => {
+    const token = req.headers.authorization.split(' ')[1]
+    const decoded = jwt_decode(token)
+
     let pengajuan = new Pengajuan({
+        user: decoded.id,
+        ruangan: req.body.ruanganID,
         dokumen: req.body.dokumen,
         deskripsiPengajuan: req.body.deskripsiPengajuan,
         tanggalMulai: req.body.tanggalMulai,
@@ -56,8 +62,12 @@ const store = (req, res, next) => {
 //update pengajuan 
 const update = (req, res, next) => {
     let pengajuanID = req.body.pengajuanID
+    const token = req.headers.authorization.split(' ')[1]
+    const decoded = jwt_decode(token)
 
     let updatedData = { 
+        user: decoded.id,
+        ruangan: req.body.ruanganID,
         dokumen: req.body.dokumen,
         deskripsiPengajuan: req.body.deskripsiPengajuan,
         tanggalMulai: req.body.tanggalMulai,

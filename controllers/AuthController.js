@@ -1,3 +1,4 @@
+const jwt_decode = require("jwt-decode")
 const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
@@ -41,11 +42,13 @@ const login = (req, res, next) => {
                     })
                 }
                 if (result){
-                    let token = jwt.sign({username: user.username}, 'alMaJawpiNen', {expiresIn: '1h'})
+                    let token = jwt.sign({id: user.id}, 'alMaJawpiNen', {expiresIn: '1h'})
+                    let decoded = jwt_decode(token)
                     res.json({ 
                         message: 'Login Successful!',
-                        token
+                        token, decoded
                     })
+                    console.log(decoded);
                 } else {
                     res.json({
                         message: 'Password does not matched!'

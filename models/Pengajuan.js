@@ -2,6 +2,14 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const PengajuanSchema = new Schema({
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    ruangan: {
+        type: Schema.Types.ObjectId,
+        ref: 'Ruangan'
+    },
     dokumen: {
         type: String,
         required: true

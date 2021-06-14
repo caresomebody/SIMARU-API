@@ -7,10 +7,14 @@ const postsRoute = require('./routes/api/posts')
 const RuanganRoute = require('./routes/api/ruangan')
 const AuthRoute = require('./routes/auth')
 const PengajuanRoute = require('./routes/api/pengajuan')
+var cors = require('cors')
 
 const app = express()
 
+
+
 // BodyParser Middleware
+app.use(cors())
 app.use(express.json())
 app.use(function (req, res, next) {
 

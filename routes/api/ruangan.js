@@ -2,8 +2,9 @@ const express = require('express')
 const router = express.Router()
 
 const Ruangan = require('../../models/Ruangan')
+const authenticate = require('../../middleware/authenticate')
 
-router.get('/', async (req, res) => {
+router.get('/', authenticate, async (req, res) => {
     try{
         const ruangan = await Ruangan.find()
         if(!ruangan) throw Error('No items found')
@@ -13,19 +14,21 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', authenticate, async (req, res) => {
     const newRoom = new Ruangan(req.body)
 
     try{
         const rooms = await newRoom.save()
         if(!rooms) throw Error ('Something went wrong')
-        res.status(200).json(rooms)
+        res.status(200).json({
+            rooms: rooms
+        })
     } catch (err) {
         res.status(400).json({ msg: err})
     }
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', authenticate, async (req, res) => {
     try{
         const rooms = await Ruangan.findById(req.params.id)
         if(!rooms) throw Error ('No id')

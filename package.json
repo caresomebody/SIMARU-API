@@ -4,7 +4,7 @@
   "description": "Backend dari SIMARU",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node server.js",
     "dev": "nodemon server"
   },
   "repository": "https://github.com/caresomebody/SIMARU-API.git",

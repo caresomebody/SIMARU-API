@@ -6,6 +6,10 @@ const RuanganSchema = new Schema({
         type: String,
         required: true
     },
+    namaRuangan: {
+        type: String,
+        required: true
+    },
     descRuangan: {
         type: String,
         required: true

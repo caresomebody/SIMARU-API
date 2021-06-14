@@ -45,7 +45,7 @@ const RuanganSchema = new Schema({
     jamTutup: {
         type: String,
         required: true
-    },
+    }
 })
 
 module.exports = mongoose.model('Ruangan', RuanganSchema)

@@ -6,27 +6,31 @@ const RuanganSchema = new Schema({
         type: String,
         required: true
     },
-    namaRuangan: {
+    photo: {
         type: String,
         required: true
     },
-    descRuangan: {
+    deskripsiRuangan: {
         type: String,
         required: true
     },
-    capacityRuangan: {
+    kapasitasRuangan: {
         type: String,
         required: true
     },
-    sizeRuangan: {
+    fasilitasRuangan: {
         type: String,
         required: true
     },
-    narhubRuangan: {
+    ukuranRuangan: {
         type: String,
         required: true
     },
     jamOperasional: {
+        type: String,
+        required: true
+    },
+    narahubungRuangan: {
         type: String,
         required: true
     },

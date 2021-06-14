@@ -4,6 +4,7 @@ const { MONGO_URI } = require('./config')
 
 //Routes
 const postsRoute = require('./routes/api/posts')
+const RuanganRoute = require('./routes/api/ruangan')
 const AuthRoute = require('./routes/auth')
 const PengajuanRoute = require('./routes/api/pengajuan')
 
@@ -25,6 +26,7 @@ mongoose.connect(MONGO_URI, {
 app.use('/api/posts', postsRoute)
 app.use('/api', AuthRoute)
 app.use('/api/pengajuan', PengajuanRoute)
+app.use('/api/ruangan', RuanganRoute)
 
 const PORT = process.env.PORT || 5000
 

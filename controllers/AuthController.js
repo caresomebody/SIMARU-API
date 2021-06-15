@@ -81,7 +81,8 @@ const all = (req, res, next) => {
 }
 
 const admin = (req, res, next) => {
-    User.find()
+    const role = {role: 0}
+    User.find(role)
     .then( response => {
         res.json({
             response
@@ -95,5 +96,5 @@ const admin = (req, res, next) => {
 }
 
 module.exports = {
-    register, login, all
+    register, login, all, admin
 }

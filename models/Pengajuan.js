@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+var date = new Date();
+date.toDateString();
+
 const PengajuanSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,

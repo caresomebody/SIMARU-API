@@ -255,7 +255,7 @@ Pada fitur “Pengajuan” pengguna dapat melihat daftar pengajuan yang telah ia
 ### Screenshot sistem
 
 ### Link Aplikasi
-
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://simaru-api.herokuapp.com/api)
 
 # 🤟 Saran untuk Pengembangan Selanjutnya
 [`^ kembali ke atas ^`](#)  

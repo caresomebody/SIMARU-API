@@ -13,7 +13,8 @@ const register = (req, res, next) => {
             username: req.body.username,
             email: req.body.email,
             nama: req.body.nama,
-            password: hashedPass
+            password: hashedPass,
+            role: req.body.role
         })
         user.save()
         .then(user => {
@@ -43,11 +44,12 @@ const login = (req, res, next) => {
                     })
                 }
                 if (result){
+                    const role = user.role 
                     let token = jwt.sign({id: user.id}, 'alMaJawpiNen', {expiresIn: '1h'})
                     let decoded = jwt_decode(token)
                     res.json({ 
                         message: 'Login Successful!',
-                        token, decoded
+                        token, role, decoded
                     })
                     console.log(decoded);
                 } else {

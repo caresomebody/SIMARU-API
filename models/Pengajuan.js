@@ -38,6 +38,10 @@ const PengajuanSchema = new Schema({
     namaAdmin: {
         type: String,
         required: true
+    },
+    tglUpload: {
+        type: Date,
+        default: Date.now
     }
 })
 

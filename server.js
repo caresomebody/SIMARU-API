@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+// const errorHandler = require('./_helpers/error-handler')
 const { MONGO_URI } = require('./config')
 
 //Routes
@@ -7,6 +8,7 @@ const postsRoute = require('./routes/api/posts')
 const RuanganRoute = require('./routes/api/ruangan')
 const AuthRoute = require('./routes/auth')
 const PengajuanRoute = require('./routes/api/pengajuan')
+const UserRoute = require('./users/users.controller')
 var cors = require('cors')
 
 const app = express()
@@ -16,6 +18,7 @@ const app = express()
 // BodyParser Middleware
 app.use(cors())
 app.use(express.json())
+// app.use(errorHandler)
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
@@ -48,6 +51,7 @@ app.use('/api/posts', postsRoute)
 app.use('/api', AuthRoute)
 app.use('/api/pengajuan', PengajuanRoute)
 app.use('/api/ruangan', RuanganRoute)
+// app.use('/users', UserRoute)
 
 const PORT = process.env.PORT || 5000
 

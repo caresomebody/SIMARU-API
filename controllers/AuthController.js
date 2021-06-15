@@ -12,6 +12,7 @@ const register = (req, res, next) => {
         let user = new User ({
             username: req.body.username,
             email: req.body.email,
+            nama: req.body.nama,
             password: hashedPass
         })
         user.save()
@@ -63,6 +64,20 @@ const login = (req, res, next) => {
     })
 }
 
+const all = (req, res, next) => {
+    User.find()
+    .then( response => {
+        res.json({
+            response
+        })
+    })
+    .catch(error => {
+        res.json({
+            message: 'An error occurred'
+        })
+    })
+}
+
 module.exports = {
-    register, login,
+    register, login, all
 }

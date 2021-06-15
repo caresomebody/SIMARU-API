@@ -83,9 +83,9 @@ const all = (req, res, next) => {
 const admin = (req, res, next) => {
     const role = {role: 0}
     User.find(role)
-    .then( response => {
+    .then( listAdmin => {
         res.json({
-            response
+            listAdmin
         })
     })
     .catch(error => {

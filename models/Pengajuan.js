@@ -10,9 +10,10 @@ const PengajuanSchema = new Schema({
         ref: 'User'
     },
     ruangan: {
+        required: true,
         type: Schema.Types.ObjectId,
         ref: 'Ruangan',
-        nama: String
+        nama: String,
     },
     dokumen: {
         type: String,

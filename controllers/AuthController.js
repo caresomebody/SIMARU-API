@@ -80,6 +80,20 @@ const all = (req, res, next) => {
     })
 }
 
+const admin = (req, res, next) => {
+    User.find()
+    .then( response => {
+        res.json({
+            response
+        })
+    })
+    .catch(error => {
+        res.json({
+            message: 'An error occurred'
+        })
+    })
+}
+
 module.exports = {
     register, login, all
 }

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const StatusPengajuanSchema = new Schema({
     status: {
-        type: Boolean,
+        type: Number,
     },
     tanggapan: {
         type: String,

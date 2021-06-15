@@ -3,7 +3,7 @@ const jwt_decode = require("jwt-decode")
 
 //Show list pengajuan
 const index = (req, res, next) => {
-    Pengajuan.find()
+    Pengajuan.find().populate("ruangan", {namaRuangan: 1})
     .then( response => {
         res.json({
             response
@@ -18,7 +18,7 @@ const index = (req, res, next) => {
 
 const show = (req, res, next) => {
     let pengajuanID = req.params.id
-    Pengajuan.findById(pengajuanID)
+    Pengajuan.findById(pengajuanID).populate("ruangan", {namaRuangan: 1})
     .then(response => {
         res.json({
             response

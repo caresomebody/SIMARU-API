@@ -4,9 +4,9 @@ const jwt_decode = require("jwt-decode")
 //Show list pengajuan
 const index = (req, res, next) => {
     Pengajuan.find().populate("ruangan", {namaRuangan: 1})
-    .then( response => {
+    .then( order => {
         res.json({
-            response
+            order
         })
     })
     .catch(error => {
@@ -19,9 +19,9 @@ const index = (req, res, next) => {
 const show = (req, res, next) => {
     let pengajuanID = req.params.id
     Pengajuan.findById(pengajuanID).populate("ruangan", {namaRuangan: 1})
-    .then(response => {
+    .then(order => {
         res.json({
-            response
+            order
         })
     })
     .catch(error => {
@@ -48,7 +48,7 @@ const store = (req, res, next) => {
         pengajuan.dokumen = req
     }
     pengajuan.save()
-    .then(response => {
+    .then(order => {
         res.json({
             message: 'Pengajuan Berhasil!',
             pengajuan
@@ -69,15 +69,8 @@ const update = (req, res, next) => {
     const decoded = jwt_decode(token)
 
     let updatedData = { 
-        user: decoded.id,
-        ruangan: req.body.ruanganID,
-        dokumen: req.body.dokumen,
-        deskripsiPengajuan: req.body.deskripsiPengajuan,
-        tanggalMulai: req.body.tanggalMulai,
-        tanggalSelesai: req.body.tanggalSelesai,
-        waktuMulai: req.body.waktuMulai,
-        waktuSelesai: req.body.waktuSelesai,
-        namaAdmin: req.body.namaAdmin,
+        status: req.body.status,
+        tanggapan: req.body.tanggapan
     }
 
     Pengajuan.findByIdAndUpdate(pengajuanID, {$set: updatedData})

@@ -42,6 +42,15 @@ const PengajuanSchema = new Schema({
     tglUpload: {
         type: Date,
         default: Date.now
+    },
+    status: {
+        type: Number,
+        enum: [0,1,2],
+        default: 1
+        //O tolak, 1 waiting, 2 terima
+    },
+    tanggapan: {
+        type: String,
     }
 })
 

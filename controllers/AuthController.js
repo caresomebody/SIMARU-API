@@ -45,7 +45,7 @@ const login = (req, res, next) => {
                 }
                 if (result){
                     const role = user.role 
-                    let token = jwt.sign({id: user.id}, 'alMaJawpiNen', {expiresIn: '1h'})
+                    let token = jwt.sign({id: user.id}, 'alMaJawpiNen', {expiresIn: '24h'})
                     let decoded = jwt_decode(token)
                     res.json({ 
                         message: 'Login Successful!',

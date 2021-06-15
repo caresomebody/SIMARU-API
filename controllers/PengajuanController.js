@@ -44,6 +44,9 @@ const store = (req, res, next) => {
         waktuSelesai: req.body.waktuSelesai,
         namaAdmin: req.body.namaAdmin,
     })
+    if (req.file){
+        pengajuan.dokumen = req.file.path
+    }
     pengajuan.save()
     .then(response => {
         res.json({

@@ -13,7 +13,6 @@ const PengajuanSchema = new Schema({
         required: true,
         type: Schema.Types.ObjectId,
         ref: 'Ruangan',
-        nama: String,
     },
     dokumen: {
         type: String,

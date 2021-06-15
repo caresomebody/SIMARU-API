@@ -8,7 +8,8 @@ const PengajuanSchema = new Schema({
     },
     ruangan: {
         type: Schema.Types.ObjectId,
-        ref: 'Ruangan'
+        ref: 'Ruangan',
+        nama: String
     },
     dokumen: {
         type: String,

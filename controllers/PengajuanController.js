@@ -17,7 +17,7 @@ const index = (req, res, next) => {
 }
 
 const show = (req, res, next) => {
-    let pengajuanID = req.body.pengajuanID
+    let pengajuanID = req.params.id
     Pengajuan.findById(pengajuanID)
     .then(response => {
         res.json({
@@ -45,7 +45,7 @@ const store = (req, res, next) => {
         namaAdmin: req.body.namaAdmin,
     })
     if (req.file){
-        pengajuan.dokumen = req.file.path
+        pengajuan.dokumen = req
     }
     pengajuan.save()
     .then(response => {
@@ -64,7 +64,7 @@ const store = (req, res, next) => {
 
 //update pengajuan 
 const update = (req, res, next) => {
-    let pengajuanID = req.body.pengajuanID
+    let pengajuanID = req.params.id
     const token = req.headers.authorization.split(' ')[1]
     const decoded = jwt_decode(token)
 
@@ -95,7 +95,7 @@ const update = (req, res, next) => {
 
 //delete pengajuan
 const destroy = (req, res, next) => {
-    let pengajuanID = req.body.pengajuanID
+    let pengajuanID = req.params.id
     Pengajuan.findOneAndDelete(pengajuanID)
     .then(() => {
         res.json({

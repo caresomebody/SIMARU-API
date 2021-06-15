@@ -6,9 +6,9 @@ const authenticate = require('../../middleware/authenticate')
 const upload = require('../../middleware/upload')
 
 router.get('/', authenticate, PengajuanController.index)
-router.post('/show', authenticate, PengajuanController.show)
+router.get('/:id', authenticate, PengajuanController.show)
 router.post('/store', authenticate, upload.single('dokumen'), PengajuanController.store)
-router.post('/update', authenticate, PengajuanController.update)
-router.post('/delete', authenticate, PengajuanController.destroy)
+router.patch('/update/:id', authenticate, PengajuanController.update)
+router.delete('/:id', authenticate, PengajuanController.destroy)
 
 module.exports = router

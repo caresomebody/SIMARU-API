@@ -253,11 +253,15 @@ Pada fitur “Pengajuan” pengguna dapat melihat daftar pengajuan yang telah ia
 
 
 ### Screenshot sistem
-### Link Aplikasi
 
+### Link Aplikasi
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://simaru-api.herokuapp.com/api)
 
 # 🤟 Saran untuk Pengembangan Selanjutnya
 [`^ kembali ke atas ^`](#)  
+
+Untuk pengembangan selanjutnya diharapkan bisa mengimplementasikan fitur upload file yang bisa dipreview secara langsung pada aplikasi, tim kami juga berharap bahwa semua data dari ruangan yang ada pada web bisa sesuai dengan kenyataan dan data IPB.
+
 # 👨‍🏫 Developer dan Job Desc
 [`^ kembali ke atas ^`](#)  
 

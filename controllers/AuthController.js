@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const register = (req, res, next) => {
     bcrypt.hash(req.body.password, 10, function(err, hashedPass) {
         if(err){
-            res.json({ error: err})
+            res.status(400).json({ error: err})
         }
 
         let user = new User ({
@@ -18,12 +18,12 @@ const register = (req, res, next) => {
         })
         user.save()
         .then(user => {
-            res.json({
+            res.status(200).json({
                 message: 'User added successfully!'
             })
         })
         .catch(error => {
-            res.json({ 
+            res.status(400).json({ 
                 message: 'An error occurred'
             })
         })
@@ -39,7 +39,7 @@ const login = (req, res, next) => {
         if(user){
             bcrypt.compare(password, user.password, function(err, result){
                 if(err){
-                    res.json({
+                    res.status(400).json({
                         error: err
                     })
                 }
@@ -59,7 +59,7 @@ const login = (req, res, next) => {
                 }
             })
         } else {
-            res.json({
+            res.status(400).json({
                 message: 'No user found'
             })
         }
@@ -69,12 +69,12 @@ const login = (req, res, next) => {
 const all = (req, res, next) => {
     User.find()
     .then( response => {
-        res.json({
+        res.status(200).json({
             response
         })
     })
     .catch(error => {
-        res.json({
+        res.status(400).json({
             message: 'An error occurred'
         })
     })
@@ -84,12 +84,12 @@ const admin = (req, res, next) => {
     const role = {role: 0}
     User.find(role)
     .then( listAdmin => {
-        res.json({
+        res.status(200).json({
             listAdmin
         })
     })
     .catch(error => {
-        res.json({
+        res.status(400).json({
             message: 'An error occurred'
         })
     })

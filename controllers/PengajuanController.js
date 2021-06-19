@@ -5,12 +5,12 @@ const jwt_decode = require("jwt-decode")
 const index = (req, res, next) => {
     Pengajuan.find().populate("ruangan", {namaRuangan: 1}).populate("user", {nama: 1})
     .then( order => {
-        res.json({
+        res.status(200).json({
             order
         })
     })
     .catch(error => {
-        res.json({
+        res.status(400).json({
             message: 'An error occurred'
         })
     })
@@ -20,12 +20,12 @@ const show = (req, res, next) => {
     let pengajuanID = req.params.id
     Pengajuan.findById(pengajuanID).populate("ruangan", {namaRuangan: 1}).populate("user", {nama: 1})
     .then(order => {
-        res.json({
+        res.status(200).json({
             order
         })
     })
     .catch(error => {
-        res.json({message: 'An error occurred'})
+        res.status(400).json({message: 'An error occurred'})
     })
 }
 
@@ -49,13 +49,13 @@ const store = (req, res, next) => {
     }
     pengajuan.save()
     .then(order => {
-        res.json({
+        res.status(200).json({
             message: 'Pengajuan Berhasil!',
             pengajuan
         })
     })
     .catch(error => {
-        res.json({
+        res.status(400).json({
             message: 'Pengajuan Gagal!'
         })
     })
@@ -75,12 +75,12 @@ const update = (req, res, next) => {
 
     Pengajuan.findByIdAndUpdate(pengajuanID, {$set: updatedData})
     .then(() => {
-        res.json({
+        res.status(200).json({
             message: 'Pengajuan berhasil diupdate!'
         })
     })
     .catch(error => {
-        res.json({
+        res.status(400).json({
             message: 'Pengajuan gagal diupdate!'
         })
     })
@@ -91,12 +91,12 @@ const destroy = (req, res, next) => {
     let pengajuanID = req.params.id
     Pengajuan.findOneAndDelete(pengajuanID)
     .then(() => {
-        res.json({
+        res.status(200).json({
             message: 'Pengajuan berhasil didelete'
         })
     })
     .catch(error => {
-        res.json({ 
+        res.status(400).json({ 
             message: 'Error occurred'
         })
     })

@@ -89,7 +89,7 @@ const update = (req, res, next) => {
 //delete pengajuan
 const destroy = (req, res, next) => {
     let pengajuanID = req.params.id
-    Pengajuan.findOneAndDelete(pengajuanID)
+    Pengajuan.findByIdAndDelete(pengajuanID)
     .then(() => {
         res.status(200).json({
             message: 'Pengajuan berhasil didelete'
